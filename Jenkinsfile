@@ -1,18 +1,28 @@
-simpleBuild {
- 
-    env = [
-        FOO : 42,
-        BAR : "YASS"
-    ]
-    
- 
+pipeline {
+    agent any
 
-    before_script = "echo before"
-    script = 'echo after $FOO'
-    
-    notifications = [
-        email : "mneale@cloudbees.com"    
-    ]
-    
-    
+    stages
+    {
+        stage('Build')
+        {
+            steps 
+            {
+                echo 'Build App'
+            }
+        }
+        stage('Test')
+        {
+            steps 
+            {
+                echo 'Test App'
+            }
+        }
+        stage('Deploy')
+        {
+            steps 
+            {
+                echo 'Deploy App'
+            }
+        }
+    }
 }
